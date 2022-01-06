@@ -21,18 +21,12 @@ if(!Self_Args[1]){
 }
 
 const input_data = Fs.readFileSync(Self_Args[0], "utf8").replace(/\r/g, "").split("\n")
-var results = []
 
 if(!input_data.length){
     console.log("input data is empty.")
     process.exit()
 }
 
-console.log("Converting the input data to JSON, please wait.")
-for( i in input_data ){
-    results.push(input_data[i])
-}
-
 console.log(`Saving the results to ${Self_Args[1]}`)
-Fs.writeFileSync(Self_Args[1], JSON.stringify(results, null, 2), "utf8")
+Fs.writeFileSync(Self_Args[1], JSON.stringify(input_data, null, 2), "utf8")
 console.log(`Results successfully saved to ${Self_Args[1]}`)
